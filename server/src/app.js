@@ -1,19 +1,14 @@
 const Koa = require('koa');
 const app = new Koa();
 
-const middleware = require('./middleware/index')
+const middleware = require('./middleware')
+// middleware work as a stack, last of top, first of bottom. 
 app.use(middleware.accessLog)
-app.use(middleware.getPara)
 app.use(middleware.respTime)
+app.use(middleware.getPara)
 
-const routes = require('./routes/index')
+const routes = require('./routes')
 app.use(routes.routes()).use(routes.allowedMethods())
 
-
-// // response
-// app.use(async ctx => {
-//   ctx.response.body = 'Hello World';
-//   // console.log(ctx.response)
-// });
 
 app.listen(3000);

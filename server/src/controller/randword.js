@@ -5,7 +5,6 @@ randnum = () => {
         'code': 0,
         'data': ''
     }
-
     try {
         result.data = Math.round(Math.random() * 10);
     } catch (error) {
@@ -17,7 +16,6 @@ randnum = () => {
     return result
 }
 module.exports = {
-
     randword: () => {
         result = {
             'code': 0,
@@ -32,7 +30,6 @@ module.exports = {
             result.code = -1;
             result.data = 'internal error';
         }
-
         return result
     }
 } 
