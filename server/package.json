@@ -7,7 +7,8 @@
     "koa-router": "^8.0.8",
     "koa-static": "^5.0.0",
     "mysql": "^2.18.1",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "stream": "0.0.2"
   },
   "name": "server",
   "version": "1.0.0",

@@ -19,6 +19,5 @@ module.exports = {
     const ms = Date.now() - start;
     ctx.set('X-Response-Time', `${ms}ms`);
     ctx.append('Link', '<http://127.0.0.1/>');
-    
   }
 }
