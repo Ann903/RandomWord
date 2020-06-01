@@ -1,29 +1,36 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 const fs = require('fs')
+// get the client 
+// create the connection to database
 
-class Db {
-    constructor() {
-        var connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '123456',
-            database: 'test'
-        });
-        this.db_conn = connection.connect();
-    }
-
-    queryDb(sql) {
-        try {
-            connection.query(sql, function (error, results, fields) {
-                if (error) throw error;
-                return results
-            });
-        } catch (error) {
-            console.error('db error', error)
-            return null
-        }
-    }
-}
+var mysql = require('mysql2');
+let config = {
+    host     : 'localhost',
+    user     : 'root',
+    password : 'toor',
+    database : 'work',
+    port:3306,
+    multipleStatements: true//允许多条sql同时执行
+};
+let pool = mysql.createPool(config);
+let query = (sql, values) => {
+    return new Promise((resolve, reject) => {
+        pool.getConnection((err, connection) => {
+            if (err) {
+                reject(err)
+            } else {
+                connection.query(sql, values, (err, rows) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(rows)
+                    }
+                    connection.release()
+                })
+            }
+        })
+    })
+};
 
 module.exports = {
     fakeData: (index) => {
@@ -45,5 +52,9 @@ module.exports = {
         }
                 console.log(ldata)
         return ldata  
+    },
+    getDataById: async (id) => {
+        a = await query('SELECT data from rand where id = ?',1)
+        return a
     }
 }

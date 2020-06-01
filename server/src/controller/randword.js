@@ -17,19 +17,39 @@ randnum = () => {
 }
 module.exports = {
     randword: () => {
+
+        async () => {
+            result = {
+                'code': 0,
+                'data': ''
+            }
+            try {
+                rst = await Db.getDataById(1);
+                data = result.rst;
+            } catch(err){ 
+                console.error(err);
+                result.code = -1;
+                result.data = 'internal error';
+            }
+                result.data = data
+                return result
+        }
+    },
+    randword_text: function(){
         result = {
             'code': 0,
             'data': ''
         }
+
         try {
-            data = Db.fakeData(randnum().data)
-            // console.log(data)
+            data =  Db.fakeData(randnum())
             result.data = data
-        } catch (error) {
-            console.error(error);
+        } catch(err){ 
+            console.error(err);
             result.code = -1;
             result.data = 'internal error';
         }
+            
         return result
     }
 } 
