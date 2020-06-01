@@ -29,10 +29,12 @@ router.get('/getrand_sse', async (ctx, next) => {
     fstream.write(`data: ${JSON.stringify(rand.randword_text())}\n\n`);
     counter --;
     if (counter === 0) {
+      console.log('end')
+      fstream.write('event: pause\n\n');
       fstream.end();
       clearInterval(t);
     }
-  }, 6000);
+  }, 5200);
 });
 router.get('/getrand', async (ctx, next) => {
   ctx.type = 'application/json';

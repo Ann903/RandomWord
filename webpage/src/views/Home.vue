@@ -131,7 +131,7 @@ export default {
       .then(function (res) {
         // console.log(that)
         console.log(res) // 在console中查看数据
-        that.show = res.data.data
+        // that.show = res.data.data
         // console.log(res.data.data)
       })
       .catch(function (error) {
@@ -142,15 +142,17 @@ export default {
       source.addEventListener(
         'message',
         e => {
-        // console.log(e)
+          // console.log(e)
           const data = JSON.parse(e.data)
-          that.showsse = data.data
-        // console.log(e)
-        // console.log('msg')
+          that.show = data.data
+          console.log(data.data)
+
+          // console.log(e)
         },
         false
       )
       source.addEventListener('pause', e => {
+        console.log('123')
         source.close()
       }, false)
       this.firstPlayFlag = false
