@@ -34,7 +34,7 @@
     <el-main>
       <div class="block" id="app">
         <!-- <span class="demonstration">默认 Hover 指示器触发</span> -->
-        <el-carousel height="520px">
+        <el-carousel height="620px" top="50%">
           <!-- <el-carousel-item v-for="item in 1" :key="item"> -->
           <!-- <h3 class="showWords">{{ show }}</h3> -->
           <h3 class="showWords">{{show}}</h3>
@@ -131,7 +131,7 @@ export default {
       .then(function (res) {
         // console.log(that)
         console.log(res) // 在console中查看数据
-        // that.show = res.data.data
+        that.show = res.data.data
         // console.log(res.data.data)
       })
       .catch(function (error) {
@@ -144,7 +144,7 @@ export default {
         e => {
           // console.log(e)
           const data = JSON.parse(e.data)
-          that.show = data.data
+          that.showsse = data.data
           console.log(data.data)
 
           // console.log(e)
@@ -175,14 +175,14 @@ export default {
   background-color: pink;
   color: #333;
   text-align: center;
-  line-height: 520px;
+  // line-height: 520px;
 }
 
 .el-carousel__item h3 {
   color: #475669;
   font-size: 14px;
-  opacity: 0.75;
-  line-height: 150px;
+  // opacity: 0.75;
+  // line-height: 150px;
   margin: 0;
 }
 
