@@ -42,7 +42,7 @@ module.exports = {
         ldata = '';
         for (var l in lines) {
         
-            if (l == line_no - 1) {
+            if (l == line_no) {
                 ldata = lines[l].trim();
             }
             if (line_no > lines.length) {
