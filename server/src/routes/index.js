@@ -26,7 +26,7 @@ router.get('/sse', async (ctx, next) => {
 });
 router.get('/getrand', async (ctx, next) => {
   ctx.type = 'application/json';
-  ctx.body = JSON.stringify(rand.randword());
+  ctx.body = JSON.stringify(rand.randword_text());
 });
 
 

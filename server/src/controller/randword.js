@@ -40,9 +40,8 @@ module.exports = {
             'code': 0,
             'data': ''
         }
-
         try {
-            data =  Db.fakeData(randnum())
+            data =  Db.fakeData(randnum().data)
             result.data = data
         } catch(err){ 
             console.error(err);

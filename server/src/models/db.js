@@ -38,7 +38,7 @@ module.exports = {
         var data = fs.readFileSync('input.txt').toString();
         var lines = data.split("\n");
         line_no = index;
-        console.log(line_no);
+        console.log(index);
         ldata = '';
         for (var l in lines) {
         
@@ -50,9 +50,9 @@ module.exports = {
                 break;
             }
         }
-                console.log(ldata)
         return ldata  
     },
+    
     getDataById: async (id) => {
         a = await query('SELECT data from rand where id = ?',1)
         return a
