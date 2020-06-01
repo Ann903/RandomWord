@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cd src; node app.js"
+    "start": "node ./src/app.js"
   },
   "dependencies": {
     "koa": "^2.11.0",
