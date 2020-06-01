@@ -54,7 +54,11 @@ module.exports = {
     },
     
     getDataById: async (id) => {
-        a = await query('SELECT data from rand where id = ?',1)
-        return a
+        a = await query('SELECT data from rand where id = ?',[id])
+        if (a.length != 0) {
+            return a[0];
+        } else {
+            return null;
+        }
     }
 }

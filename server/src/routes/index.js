@@ -29,5 +29,10 @@ router.get('/getrand', async (ctx, next) => {
   ctx.body = JSON.stringify(rand.randword_text());
 });
 
+router.get('/getrand_db', async (ctx, next) => {
+  ctx.type = 'application/json';
+  ctx.body = JSON.stringify(await rand.randword());
+});
+
 
 module.exports = router

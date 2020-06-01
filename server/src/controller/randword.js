@@ -16,24 +16,23 @@ randnum = () => {
     return result
 }
 module.exports = {
-    randword: () => {
-
-        async () => {
+    randword: async () => {
             result = {
                 'code': 0,
-                'data': ''
+                'data': '123'
             }
             try {
-                rst = await Db.getDataById(1);
-                data = result.rst;
+                let idx = randnum().data
+                console.log(idx)
+                rst = await Db.getDataById(idx);
+                result.data = rst.data
+
             } catch(err){ 
                 console.error(err);
                 result.code = -1;
                 result.data = 'internal error';
             }
-                result.data = data
-                return result
-        }
+            return result
     },
     randword_text: function(){
         result = {
