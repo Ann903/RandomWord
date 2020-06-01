@@ -19,7 +19,7 @@ module.exports = {
     randword: async () => {
             result = {
                 'code': 0,
-                'data': '123'
+                'data': ''
             }
             try {
                 let idx = randnum().data
