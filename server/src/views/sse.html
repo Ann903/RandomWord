@@ -1,0 +1,22 @@
+<script>
+const source = new EventSource('http://localhost:8844/stream');
+
+source.addEventListener('open', () => {
+  console.log('Connected');
+}, false);
+
+source.addEventListener('message', e => {
+  console.log(e);
+  console.log('msg')
+
+}, false);
+
+source.addEventListener('test', e => {
+  console.log(e);
+  console.log('test')
+}, false);
+
+source.addEventListener('pause', e => {
+  source.close();
+}, false);
+</script>
