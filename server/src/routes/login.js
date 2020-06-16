@@ -61,6 +61,12 @@ router.get('/get_cookie', async (ctx, next) => {
   ctx.body = 'cookie is ok'
 });
 
-
+const deleteCookie = ctx =>{
+  ctx.response.body = "Cookie删除成功"
+  ctx.cookies.set('name','',{signed:false,maxAge:0})
+  ctx.cookies.set('age','',{signed:false,maxAge:0})
+  // ctx.body = "Hello world"
+}
+router.get('/delete',deleteCookie)
 
 module.exports = router
