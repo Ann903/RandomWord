@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            position: relative;
+        }
+        .formItem{
+            position: absolute;
+            left: 500px;
+            top: 200px;
+        }
+        #loginBtn{
+            padding: 5px;
+            margin: 0 57px;
+        }
+        #resetBtn{
+            padding: 5px;
+            margin: 0 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="formItem" οnsubmit="return false;">
+        用户名: <input type="text" id="user">
+        <br>
+        <br>
+        密&ensp;&ensp;码: <input type="password" id="pwd">
+        <br>
+        <br>
+        <input type="button" value="登录" id="loginBtn">
+        <input type="button" value="重置" id="resetBtn">
+    </form> 
+</body>
+<script>
+    var loginBtn = document.getElementById('loginBtn');
+    // console.log(loginBtn);
+    loginBtn.onclick = function(){
+        //创建xhr对象
+        var xhr = new XMLHttpRequest();
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else{
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        //异步接受响应
+        xhr.onreadystatechange = function(){
+            console.log("111"); 
+            if(xhr.readyState == 4){
+                console.log("222"); 
+                if(xhr.status == 200){
+                    //实际操作
+                    // result.innerHTML += xhr.responseText;
+                    alert("Success");
+                }else if(xhr.status == 401){
+                    alert("failed");
+                }else{
+                    alert("else error");
+                }
+            }
+        }
+        //发送请求
+        // var loginStr = 'http://localhost:3000/login?' + 'username=' + document.getElementById('user').value + '&password=' + document.getElementById('pwd').value;
+        // console.log(loginStr);
+        // xhr.open('get',loginStr,true);
+        xhr.open('get','http://localhost:3000/login?username=ann&password=123',true);
+        
+        
+        xhr.send();
+    }
+    </script>    
+</html>
